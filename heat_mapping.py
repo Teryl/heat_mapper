@@ -2,8 +2,9 @@ import argparse
 
 import cv2
 
-from utils.stream import Stream
-from utils.processor import Processor
+from core.stream import Stream
+# from core.processor import Processor
+import utils.processing as p
 
 
 def get_arguments():
@@ -30,9 +31,6 @@ if __name__ == '__main__':
 
     # Starts an instance from the `Stream` class
     v = Stream(source)
-
-    # Creates a processing instance
-    p = Processor()
 
     # While the loop is True
     while True:

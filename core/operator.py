@@ -1,6 +1,6 @@
 import cv2
 
-class Processor:
+class Operator:
     """
     """
 
@@ -15,6 +15,7 @@ class Processor:
         """
         """
 
+        #
         filtered_frame = self.sub.apply(frame)
 
         return filtered_frame

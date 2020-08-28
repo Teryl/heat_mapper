@@ -2,7 +2,7 @@ import argparse
 
 import cv2
 
-from utils.stream import Stream
+from core.stream import Stream
 
 
 def get_arguments():
