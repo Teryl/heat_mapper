@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 # Constant that defines whether outputs will be saved
 FOLDER = 'outputs/'
@@ -24,6 +25,12 @@ class Stream:
 
         # Reads and saves the initial frame as a property
         _, self.initial_frame = self.video.read()
+
+        # Gathers the shape of the initial frame
+        (height, width, n_channels) = self.initial_frame.shape
+
+        # Creates an array to hold the masked frame
+        self.masked_frame = np.zeros((height, width), np.uint8)
 
     @property
     def current_frame(self):
@@ -89,7 +96,10 @@ class Stream:
 
         print(f'Outputting images to: {FOLDER}')
 
-        #
+        # Initial frame
         cv2.imwrite(FOLDER + 'initial_frame.jpg', self.initial_frame)
+
+        # Masked frame
+        cv2.imwrite(FOLDER + 'masked_frame.jpg', self.masked_frame)
 
         print('Images saved.')

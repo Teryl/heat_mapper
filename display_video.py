@@ -14,7 +14,7 @@ def get_arguments():
 
     """
 
-    parser = argparse.ArgumentParser(usage='Loads a video and builds its heat map.')
+    parser = argparse.ArgumentParser(usage='Loads a video and displays it.')
 
     parser.add_argument('source', help='Identifier to file that should be loaded as a video.', type=str)
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
         # Checks if frame is valid
         if valid:
-            # Shows the frame using openCV
+            # Shows the frame
             cv2.imshow('video', frame)
 
         # If the `q` key is inputted, breaks the loop

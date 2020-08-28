@@ -39,8 +39,17 @@ if __name__ == '__main__':
 
         # Checks if frame is valid
         if valid:
+            #
+            filtered_frame = p.remove_background(frame)
+
+            #
+            threshold_frame = p.threshold(filtered_frame)
+
+            #
+            v.masked_frame = cv2.add(v.masked_frame, threshold_frame)
+
             # Shows the frame
-            cv2.imshow('video', p.remove_background(frame))
+            # cv2.imshow('video', filtered_frame)
 
         # If the `q` key is inputted, breaks the loop
         if cv2.waitKey(1) & 0xFF == ord('q'):
