@@ -3,7 +3,6 @@ import argparse
 import cv2
 
 from utils.stream import Stream
-from utils.processor import Processor
 
 
 def get_arguments():
@@ -31,9 +30,6 @@ if __name__ == '__main__':
     # Starts an instance from the `Stream` class
     v = Stream(source)
 
-    # Creates a processing instance
-    p = Processor()
-
     # While the loop is True
     while True:
         # Reads a new frame
@@ -42,7 +38,7 @@ if __name__ == '__main__':
         # Checks if frame is valid
         if valid:
             # Shows the frame using openCV
-            cv2.imshow('video', p.remove_background(frame))
+            cv2.imshow('video', frame)
 
         # Checks if video has already displayed its full length
         if v.full_length():
@@ -54,6 +50,6 @@ if __name__ == '__main__':
 
     # Stops the instance
     v.stop()
-            
+
     # Destroy all windows for cleaning up memory
     cv2.destroyAllWindows()
