@@ -1,5 +1,8 @@
 import cv2
 
+# Constant that defines whether outputs will be saved
+FOLDER = 'outputs/'
+
 
 class Stream:
     """A Stream class enables an user from loading a file and streaming it.
@@ -14,6 +17,8 @@ class Stream:
 
         """
 
+        print(f'Initializing video from: {source}')
+
         # Creating a property for the VideoCapture from `source`
         self.video = cv2.VideoCapture(source)
 
@@ -26,15 +31,15 @@ class Stream:
 
         """
 
-        return self.video.get(cv2.CAP_PROP_POS_FRAMES)
+        return int(self.video.get(cv2.CAP_PROP_POS_FRAMES))
 
     @property
     def total_frames(self):
         """Gathers the amount of total frames.
-        
+
         """
 
-        return self.video.get(cv2.CAP_PROP_FRAME_COUNT)
+        return int(self.video.get(cv2.CAP_PROP_FRAME_COUNT))
 
     def read(self):
         """Reads a new frame.
@@ -70,5 +75,21 @@ class Stream:
 
         """
 
+        print('Stopping video ...')
+
         # Releases the capture device
         self.video.release()
+
+        print('Video stopped.')
+
+    def output_images(self):
+        """Outputs class properties as images.
+
+        """
+
+        print(f'Outputting images to: {FOLDER}')
+
+        #
+        cv2.imwrite(FOLDER + 'initial_frame.jpg', self.initial_frame)
+
+        print('Images saved.')

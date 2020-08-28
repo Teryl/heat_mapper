@@ -1,10 +1,10 @@
 import argparse
 
 import cv2
+from tqdm import tqdm
 
-from core.stream import Stream
-# from core.processor import Processor
 import utils.processing as p
+from core.stream import Stream
 
 
 def get_arguments():
@@ -32,19 +32,15 @@ if __name__ == '__main__':
     # Starts an instance from the `Stream` class
     v = Stream(source)
 
-    # While the loop is True
-    while True:
+    # Iterates over amount of possible frames
+    for _ in tqdm(range(v.total_frames)):
         # Reads a new frame
         valid, frame = v.read()
 
         # Checks if frame is valid
         if valid:
-            # Shows the frame using openCV
+            # Shows the frame
             cv2.imshow('video', p.remove_background(frame))
-
-        # Checks if video has already displayed its full length
-        if v.full_length():
-            break
 
         # If the `q` key is inputted, breaks the loop
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -52,6 +48,9 @@ if __name__ == '__main__':
 
     # Stops the instance
     v.stop()
+
+    # Outputs properties as images
+    v.output_images()
             
-    # Destroy all windows for cleaning up memory
+    # Destroys all windows for cleaning up memory
     cv2.destroyAllWindows()
