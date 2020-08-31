@@ -14,7 +14,8 @@ def get_arguments():
 
     """
 
-    parser = argparse.ArgumentParser(usage='Renders a collection of images into a video.')
+    parser = argparse.ArgumentParser(
+        usage='Renders a collection of images into a video.')
 
     parser.add_argument('source', help='Identifier to folder that should be rendered as a video.', type=str)
 
@@ -36,7 +37,7 @@ if __name__ == '__main__':
 
     # Gathers a file list from the selected folder
     source_folder = [f for f in os.listdir(source) if f.endswith('.jpg')]
-    
+
     # Sorts the folder incrementally
     source_folder.sort(key=lambda f: int(re.sub('\D', '', f)))
 

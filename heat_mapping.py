@@ -68,6 +68,6 @@ if __name__ == '__main__':
 
     # Outputs the masks as images
     v.output_masks()
-            
+
     # Destroys all windows for cleaning up memory
     cv2.destroyAllWindows()
