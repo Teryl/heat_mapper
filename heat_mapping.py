@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # Gathers the input arguments
     args = get_arguments()
 
-    # Gathering variables from arguments
+    # Gathers variables from arguments
     source = args.source
     write = args.write
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
             # Checks if post-processed frame should be written to disk
             if write:
                 # Outputs post-processed frame to disk
-                v.output_frame(i)
+                v.output_frame(i+1)
             else:
                 # Shows the post-processed frame
                 cv2.imshow('video', v.frame)

@@ -25,7 +25,7 @@ if __name__ == '__main__':
     # Gathers the input arguments
     args = get_arguments()
 
-    # Gathering variables from arguments
+    # Gathers variables from arguments
     source = args.source
 
     # Starts an instance from the `Stream` class

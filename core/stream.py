@@ -1,8 +1,11 @@
+import os
+
 import cv2
 import numpy as np
 
 # Constant that defines whether outputs will be saved
 FOLDER = 'outputs/'
+FRAMES_FOLDER = FOLDER + 'frames/'
 
 
 class Stream:
@@ -37,6 +40,11 @@ class Stream:
 
         # Post-processed frame
         self.frame = np.zeros((height, width), np.uint8)
+
+        # Checks if `frames` folder exists
+        if not os.path.exists(FRAMES_FOLDER):
+            # If not, creates the folder
+            os.makedirs(FRAMES_FOLDER)
 
     @property
     def current_frame(self):
@@ -103,8 +111,8 @@ class Stream:
 
         """
 
-        # Current frame
-        cv2.imwrite(FOLDER + f'frames/frame_{index}.jpg', self.frame)
+        # Post-processed frame
+        cv2.imwrite(FRAMES_FOLDER + f'frame_{index}.jpg', self.frame)
 
     def output_masks(self):
         """Outputs masks as images.
@@ -119,4 +127,3 @@ class Stream:
 
         # Color masked frame
         cv2.imwrite(FOLDER + 'color_masked_frame.jpg', self.color_masked_frame)
-
