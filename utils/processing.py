@@ -4,6 +4,24 @@ import cv2
 BG_SUB = cv2.bgsegm.createBackgroundSubtractorMOG()
 
 
+def colorize(frame, color_map=cv2.COLORMAP_HOT):
+    """Applies a color map to a frame.
+
+    Args:
+        frame (np.array): Array representing the frame.
+        color_map (int): An integer that defines the color map to be used.
+
+    Returns:
+        Colorized frame.
+
+    """
+
+    # Applies a color map to the frame
+    frame = cv2.applyColorMap(frame, color_map)
+
+    return frame
+
+
 def remove_background(frame):
     """Removes background from a frame.
 

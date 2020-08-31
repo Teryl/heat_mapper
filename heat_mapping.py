@@ -19,6 +19,8 @@ def get_arguments():
 
     parser.add_argument('source', help='Identifier to file that should be loaded as a video.', type=str)
 
+    parser.add_argument('--write', help='Writes heat map to disk.', action='store_true')
+
     return parser.parse_args()
 
 
@@ -28,28 +30,34 @@ if __name__ == '__main__':
 
     # Gathering variables from arguments
     source = args.source
+    write = args.write
 
     # Starts an instance from the `Stream` class
     v = Stream(source)
 
     # Iterates over amount of possible frames
-    for _ in tqdm(range(v.total_frames)):
+    for i in tqdm(range(v.total_frames)):
         # Reads a new frame
         valid, frame = v.read()
 
         # Checks if frame is valid
         if valid:
-            #
-            filtered_frame = p.remove_background(frame)
+            # Creates a masked frame
+            v.masked_frame = cv2.add(v.masked_frame, p.threshold(p.remove_background(frame)))
 
-            #
-            threshold_frame = p.threshold(filtered_frame)
+            # Colorizes the masked frame
+            v.color_masked_frame = p.colorize(v.masked_frame)
 
-            #
-            v.masked_frame = cv2.add(v.masked_frame, threshold_frame)
+            # Post-processed frame will be a weighted frame between current frame and colorized mask
+            v.frame = cv2.addWeighted(frame, 0.5, v.color_masked_frame, 0.5, 0)
 
-            # Shows the frame
-            # cv2.imshow('video', filtered_frame)
+            # Checks if post-processed frame should be written to disk
+            if write:
+                # Outputs post-processed frame to disk
+                v.output_frame(i)
+            else:
+                # Shows the post-processed frame
+                cv2.imshow('video', v.frame)
 
         # If the `q` key is inputted, breaks the loop
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -58,8 +66,8 @@ if __name__ == '__main__':
     # Stops the instance
     v.stop()
 
-    # Outputs properties as images
-    v.output_images()
+    # Outputs the masks as images
+    v.output_masks()
             
     # Destroys all windows for cleaning up memory
     cv2.destroyAllWindows()

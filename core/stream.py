@@ -29,8 +29,14 @@ class Stream:
         # Gathers the shape of the initial frame
         (height, width, n_channels) = self.initial_frame.shape
 
-        # Creates an array to hold the masked frame
+        # Masked frame
         self.masked_frame = np.zeros((height, width), np.uint8)
+
+        # Colorized masked frame
+        self.color_masked_frame = np.zeros((height, width), np.uint8)
+
+        # Post-processed frame
+        self.frame = np.zeros((height, width), np.uint8)
 
     @property
     def current_frame(self):
@@ -89,12 +95,21 @@ class Stream:
 
         print('Video stopped.')
 
-    def output_images(self):
-        """Outputs class properties as images.
+    def output_frame(self, index):
+        """Outputs post-processed frame as an image.
+
+        Args:
+            index (int): Index of frame to be saved.
 
         """
 
-        print(f'Outputting images to: {FOLDER}')
+        # Current frame
+        cv2.imwrite(FOLDER + f'frames/frame_{index}.jpg', self.frame)
+
+    def output_masks(self):
+        """Outputs masks as images.
+
+        """
 
         # Initial frame
         cv2.imwrite(FOLDER + 'initial_frame.jpg', self.initial_frame)
@@ -102,4 +117,6 @@ class Stream:
         # Masked frame
         cv2.imwrite(FOLDER + 'masked_frame.jpg', self.masked_frame)
 
-        print('Images saved.')
+        # Color masked frame
+        cv2.imwrite(FOLDER + 'color_masked_frame.jpg', self.color_masked_frame)
+
