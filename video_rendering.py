@@ -14,8 +14,7 @@ def get_arguments():
 
     """
 
-    parser = argparse.ArgumentParser(
-        usage='Renders a collection of images into a video.')
+    parser = argparse.ArgumentParser(usage='Renders a collection of images into a video.')
 
     parser.add_argument('source', help='Identifier to folder that should be rendered as a video.', type=str)
 
