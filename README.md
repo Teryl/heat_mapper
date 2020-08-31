@@ -1,4 +1,4 @@
-# Heat Mapper
+# Heat Mapper: An OpenCV-based Motion Detector
 
 An image processing utility built upon OpenCV to generate motion heat maps from video-based sources.
 
