@@ -2,6 +2,8 @@
 
 An image processing utility built upon OpenCV to generate motion heat maps from video-based sources.
 
+*Note that this application is purely inspired by [intel-iot-devkit/motion-heatmap-cpp](https://github.com/intel-iot-devkit/motion-heatmap-cpp).*
+
 ---
 
 ## Installation
