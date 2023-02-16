@@ -4,8 +4,15 @@ import cv2
 from tqdm import tqdm
 
 import utils.processing as p
+import utils.videoparser as vp
 from core.stream import Stream
 
+pathIn= "outputs/frames/"
+pathOut = 'outputs/video/output.mp4'
+fps = 25.0
+
+def parse_video():
+    vp.convert_frames_to_video(pathIn, pathOut, fps)
 
 def get_arguments():
     """Gets arguments from the command line.
@@ -22,7 +29,6 @@ def get_arguments():
     parser.add_argument('--write', help='Writes heat map to disk.', action='store_true')
 
     return parser.parse_args()
-
 
 if __name__ == '__main__':
     # Gathers the input arguments
@@ -71,3 +77,6 @@ if __name__ == '__main__':
 
     # Destroys all windows for cleaning up memory
     cv2.destroyAllWindows()
+
+    # Parses frames to video
+    parse_video()

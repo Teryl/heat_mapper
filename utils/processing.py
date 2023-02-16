@@ -1,10 +1,10 @@
 import cv2
 
 # Constant that defines the background subtractor
-BG_SUB = cv2.bgsegm.createBackgroundSubtractorMOG()
+BG_SUB = cv2.createBackgroundSubtractorMOG2()
 
 
-def colorize(frame, color_map=cv2.COLORMAP_HOT):
+def colorize(frame, color_map=cv2.COLORMAP_INFERNO):
     """Applies a color map to a frame.
 
     Args:
@@ -39,7 +39,7 @@ def remove_background(frame):
     return frame
 
 
-def threshold(frame, threshold=2, max_value=2):
+def threshold(frame, threshold=1.5, max_value=4):
     """Applies a binary threshold to a frame.
 
     Args:
@@ -53,6 +53,6 @@ def threshold(frame, threshold=2, max_value=2):
     """
 
     # Thresholds the frame
-    _, frame = cv2.threshold(frame, threshold, max_value, cv2.THRESH_BINARY)
+    _, frame = cv2.threshold(frame, threshold, max_value, cv2.THRESH_TRUNC)
 
     return frame
