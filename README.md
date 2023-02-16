@@ -26,7 +26,7 @@ To run the scripts, first copy and paste a video onto the project folder. Then, 
 
 ```python heat_mapping.py <video_name> ```
 
-*Add the ```--write``` flag if you want the frames to be written to the disk. Video rendering requires the frames to be written to disk.*
+*Add the ```--write``` flag if you want the frames to be written to disk. Video rendering requires the frames to be written to disk.*
 
 ### Displaying Video
 
