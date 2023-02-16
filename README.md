@@ -59,19 +59,9 @@ This is done automatically. Remember, the script only terminates when the video 
 
 ## Environment configuration
 
-Note that sometimes, there is a need for additional implementation. If needed, from here, you will be the one to know all of its details.
+If you're using Windows, good job.
 
-### Ubuntu
-
-No specific additional commands needed.
-
-### Windows
-
-No specific additional commands needed.
-
-### MacOS
-
-No specific additional commands needed.
+If Mac go fuk yourself.
 
 ---
 
