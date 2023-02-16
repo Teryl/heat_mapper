@@ -24,7 +24,7 @@ This repository is composed of four scripts that assist one in producing a heat 
 
 To run the scripts, first copy and paste a video onto the project folder. Then, run the following command:
 
-```python <script_name> <video_name> ```
+```python heat_mapping.py <video_name> ```
 
 *Add the ```--write``` flag if you want the frames to be written to the disk. Video rendering requires the frames to be written to disk.*
 
