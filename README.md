@@ -77,6 +77,6 @@ No specific additional commands needed.
 
 ## Support
 
-There is literally no support for this repo I don't have time for your bullshit.
+There is literally no support for this repo I am currently getting screwed over by uni I don't have time for your bullshit.
 
 ---
