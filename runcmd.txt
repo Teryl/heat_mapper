@@ -1,0 +1,1 @@
+& C:/Users/mithu/AppData/Local/Programs/Python/Python311/python.exe c:/Mithun/CodeDump/heat_mapper/heat_mapping.py video.mp4 --write

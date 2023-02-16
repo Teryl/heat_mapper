@@ -131,7 +131,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# Files
-video_rendering.py
-runcmd.txt
