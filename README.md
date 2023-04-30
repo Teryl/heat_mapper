@@ -61,7 +61,7 @@ This is done automatically. Remember, the script only terminates when the video 
 
 If you're using Windows, good job.
 
-If Mac go fuk yourself.
+If Mac uhh sorry good luck tho.
 
 ---
 
