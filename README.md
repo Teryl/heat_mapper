@@ -9,6 +9,8 @@ An image processing utility built upon OpenCV to generate motion heat maps from 
   - Video Parser: https://github.com/Vibhootikishor/Converting-Frames-to-Video
 
 ---
+## Changes I did:
+Some optimization, some basic improvements and stuff to overall better suit this to my purpose. Saved it as a repo just in case I needed it in the future.
 
 ## Installation
 
